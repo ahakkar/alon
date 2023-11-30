@@ -30,19 +30,19 @@ fn main() {
     let mut collected:i64 = 1;
 
     // Use the map to collect numbers one by one
-    while collected <= n {
+    while (collected <= n) {
         let current_index = *map.get(&collected).unwrap();    
         collected += 1;
     
         // In the end there's no next index to comapre
-        if collected > n {
+        if (collected > n) {
             rounds += 1;
             break;
         }
     
         // Add a new round when needed
         let next_index = *map.get(&collected).unwrap();    
-        if current_index > next_index {
+        if (current_index > next_index) {
             rounds += 1;
         }
     }
