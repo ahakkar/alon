@@ -22,9 +22,10 @@ fn main() {
     let vec: Vec<i64> = (1..=n).collect(); 
     let sum = n * (n+1) / 2;
 
-    if (sum == 0) {
+    if (sum % 2 == 0) {
         println!("YES");
         println!("{}", sum);
+        print_result(&vec);
     } 
     else {
         println!("NO");
@@ -32,7 +33,23 @@ fn main() {
     }
 }
 
-fn print_result(vec: &[i64]) {
+fn print_result(vec: &Vec<i64>) {
+    let mut s1: Vec<i64> = vec![];
+    let mut s2: Vec<i64> = vec![];
 
+    let mut add: bool = false;
+
+    for &number in vec {
+        if add {
+            s1.push(number); 
+            add = false;
+        } else {
+            s2.push(number);
+            add = true;
+        }
+    }
+
+    println!("s1: {:?}, sum: {}", s1, s1.iter().sum::<i64>());
+    println!("s2: {:?}, sum: {}", s2, s2.iter().sum::<i64>());
 }
 
